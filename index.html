@@ -88,4 +88,177 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius:
+    border-radius: 18px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    box-shadow: 0 0 10px #ffb6c1;
+  }
+  .dish:hover .dish-inner {
+    transform: rotateY(20deg) rotateX(10deg);
+  }
+  .dish-front,
+  .dish-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    backface-visibility: hidden;
+  }
+  .dish-front {
+    background: center/cover no-repeat;
+    box-shadow: inset 0 0 40px #ffb6c1;
+  }
+  .dish-back {
+    background: #ffb6c1;
+    color: #2e1a3e;
+    transform: rotateY(180deg);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 0 20px #ffb6c1;
+  }
+
+  /* Заголовки */
+  h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+    color: #ffb6c1;
+    text-shadow: 0 0 8px #ffb6c1;
+  }
+
+  /* Секции "О нас" и "Контакты" */
+  section#about,
+  section#contacts {
+    max-width: 700px;
+    margin: 80px auto;
+    background: #2e1a3e;
+    padding: 30px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+  }
+  section#about p,
+  section#contacts p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f0e6f6;
+  }
+
+  /* Подвал */
+  footer {
+    text-align: center;
+    padding: 25px 15px;
+    background: #2e1a3e;
+    color: #f0e6f6;
+    font-size: 0.9rem;
+    box-shadow: 0 -5px 15px rgba(255, 182, 193, 0.2);
+    margin-top: 60px;
+  }
+
+  /* Мобильная адаптация */
+  @media (max-width: 768px) {
+    nav a {
+      margin-left: 15px;
+      font-size: 1rem;
+    }
+    .dish {
+      width: 90vw;
+      max-width: 320px;
+      height: 400px;
+    }
+    section#about,
+    section#contacts {
+      padding: 25px 20px;
+      margin: 60px 10px;
+    }
+  }
+
+  /* Фон сакуры (веточки и цветы) */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image:
+      url('https://i.ibb.co/Zh3BQKd/sakura-branch-pink.png'),
+      url('https://i.ibb.co/smnd4d9/sakura-flower-pink.png');
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left, bottom right;
+    background-size: 25vw auto, 15vw auto;
+    opacity: 0.15;
+    z-index: 0;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Sakura Sushi</h1>
+  <nav>
+    <a href="#">Главная</a>
+    <a href="#menu">Меню</a>
+    <a href="#about">О нас</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<main>
+  <section id="menu">
+    <h2>Наше меню</h2>
+    <div class="menu-3d">
+      <div class="dish">
+        <div class="dish-inner">
+          <div class="dish-front" style="background-image: url('images/sushi1.jpg');"></div>
+          <div class="dish-back">
+            <p>Филадельфия</p>
+            <p>Лосось, сыр Филадельфия, авокадо</p>
+            <p>350 ₽</p>
+          </div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-inner">
+          <div class="dish-front" style="background-image: url('images/sushi2.jpg');"></div>
+          <div class="dish-back">
+            <p>Калифорния</p>
+            <p>Краб, огурец, икра тобико</p>
+            <p>300 ₽</p>
+          </div>
+        </div>
+      </div>
+      <div class="dish">
+        <div class="dish-inner">
+          <div class="dish-front" style="background-image: url('images/sushi3.jpg');"></div>
+          <div class="dish-back">
+            <p>Ролл с угрем</p>
+            <p>Угорь, огурец, соус унаги</p>
+            <p>400 ₽</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>О нас</h2>
+    <p>Мы готовим аутентичные японские блюда с любовью и качественными ингредиентами. Добро пожаловать в Sakura Sushi!</p>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p>Телефон: +7 (926) 480-82-29</p>
+    <p>Email: info@sakurasushi-bar.ru</p>
+    <p>Адрес: г. Апрелевка, ул. Дубки, д. 15</p>
+  </section>
+</main>
+
+<footer>
+  © 2025 Sakura Sushi — Все права защищены
+</footer>
+</body>
+</html>
