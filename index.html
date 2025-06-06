@@ -1,338 +1,60 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Сакура Суши — 3D меню</title>
-  <style>
-    /* Общие стили и цвета */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #000000;
-      color: #fff;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    header {
-      background: linear-gradient(90deg, #800000, #ff0000);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    header h1 {
-      font-weight: 900;
-      font-size: 1.8rem;
-      color: #fff0f0;
-      font-family: 'Brush Script MT', cursive;
-    }
-
-    nav {
-      display: flex;
-      gap: 30px;
-    }
-
-    nav button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-      padding: 10px 15px;
-      border-radius: 10px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    nav button.active,
-    nav button:hover {
-      background-color: #ff0000;
-      color: #fff;
-      box-shadow: 0 0 10px #ff0000;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ff4040;
-      text-align: center;
-      font-family: 'Segoe UI Black', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    /* 3D меню */
-    .carousel {
-      perspective: 1200px;
-      overflow-x: auto;
-      padding: 20px 0;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: #ff0000 #330000;
-    }
-
-    .carousel::-webkit-scrollbar {
-      height: 10px;
-    }
-    .carousel::-webkit-scrollbar-thumb {
-      background-color: #ff0000;
-      border-radius: 5px;
-    }
-    .carousel::-webkit-scrollbar-track {
-      background: #330000;
-    }
-
-    .carousel__container {
-      display: flex;
-      gap: 30px;
-      padding-left: 40px;
-    }
-
-    .card {
-      background: #1a0000;
-      border-radius: 20px;
-      width: 280px;
-      flex-shrink: 0;
-      box-shadow: 0 0 20px #ff0000;
-      cursor: pointer;
-      color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d;
-      will-change: transform;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 20px 20px 0 0;
-      border-bottom: 3px solid #ff0000;
-      pointer-events: none;
-      display: block;
-    }
-
-    .card h3 {
-      margin: 15px 15px 5px 15px;
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #ff5555;
-    }
-
-    .card p {
-      margin: 0 15px 15px 15px;
-      font-size: 1rem;
-      color: #ffbcbc;
-    }
-
-    .card .price {
-      margin: 0 15px 15px 15px;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #ff0000;
-    }
-
-    .card:hover {
-      transform: rotateY(15deg) translateZ(20px) scale(1.05);
-      box-shadow: 0 0 30px #ff0000;
-      z-index: 5;
-    }
-
-    /* Секция меню */
-    section.section-content {
-      display: none;
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    section.section-content.active {
-      display: block;
-    }
-
-    /* Анимация fadeIn */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Анимация лепестков сакуры */
-    .sakura-petal {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle at 50% 50%, #ffb7c5, #d94f5a);
-      border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-      opacity: 0.8;
-      pointer-events: none;
-      animation-name: fall, sway;
-      animation-timing-function: linear, ease-in-out;
-      animation-iteration-count: infinite, infinite;
-      animation-duration: 7s, 3s;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-50px) rotate(0deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes sway {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(15px);
-      }
-    }
-
-    /* Ссылки */
-    a {
-      color: #ff0000;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Мобильная адаптация */
-    @media (max-width: 768px) {
-      .carousel__container {
-        gap: 15px;
-        padding-left: 20px;
-      }
-      .card {
-        width: 220px;
-      }
-      nav {
-        gap: 15px;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakura Sushi</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
-
-  <header>
-    <h1>Сакура Суши</h1>
+  <div id="sakura-animation"></div>  <header>
+    <div class="logo">🍣 Sakura Sushi</div>
     <nav>
-      <button class="nav-btn active" data-target="menu">Меню</button>
-      <button class="nav-btn" data-target="about">О нас</button>
-      <button class="nav-btn" data-target="contacts">Контакты</button>
+      <ul>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#sets">Сеты</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#gallery">Галерея</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
     </nav>
-  </header>
+  </header>  <main>
+    <section id="hero">
+      <h1>Добро пожаловать в Sakura Sushi</h1>
+      <p>Японская кухня с любовью и стилем</p>
+    </section><section id="menu">
+  <h2>Меню</h2>
+  <div class="menu-3d">
+    <!-- карточки меню будут здесь -->
+  </div>
+</section>
 
-  <main>
-    <section id="menu" class="section-content active">
-      <h2>Наше 3D меню</h2>
-      <div class="carousel" aria-label="3D меню суши">
-        <div class="carousel__container">
-          <div class="card">
-            <img src="images/sushi1.jpg" alt="Филадельфия" />
-            <h3>Филадельфия</h3>
-            <p>Лосось, сыр Филадельфия, авокадо</p>
-            <div class="price">350 ₽</div>
-          </div>
-          <div class="card">
-            <img src="images/sushi2.jpg" alt="Калифорния" />
-            <h3>Калифорния</h3>
-            <p>Краб, огурец, икра тобико</p>
-            <div class="price">300 ₽</div>
-          </div>
-          <div class="card">
-            <img src="images/sushi3.jpg" alt="Ролл с угрем" />
-            <h3>Ролл с угрем</h3>
-            <p>Угорь, огурец, соус унаги</p>
-            <div class="price">400 ₽</div>
-          </div>
-          <div class="card">
-            <img src="images/sushi4.jpg" alt="Туна ролл" />
-            <h3>Туна ролл</h3>
-            <p>Тунец, рис, нори</p>
-            <div class="price">380 ₽</div>
-          </div>
-        </div>
-      </div>
-      <p style="margin-top: 25px; font-weight: 600; text-align:center;">
-        <a href="menu.html">Расширенное меню →</a>
-      </p>
-    </section>
+<section id="sets">
+  <h2>Сеты</h2>
+  <div class="sets-list">
+    <!-- сеты отображаются здесь -->
+  </div>
+</section>
 
-    <section id="about" class="section-content">
-      <h2>О нас</h2>
-      <p style="max-width:700px; margin: 0 auto; line-height: 1.5; color:#ccc;">
-        Добро пожаловать в «Сакура Суши» — место, где сочетаются традиции японской кухни и современный стиль. Мы готовим с любовью и используем только свежие ингредиенты, чтобы вы могли наслаждаться настоящим вкусом.
-      </p>
-    </section>
+<section id="reviews">
+  <h2>Отзывы</h2>
+  <!-- отзывы клиентов -->
+</section>
 
-    <section id="contacts" class="section-content">
-      <h2>Контакты</h2>
-      <p style="max-width:700px; margin: 0 auto; line-height: 1.5; color:#ccc;">
-        📞 Телефон: +7 (999) 123-45-67<br />
-        📍 Адрес: г. Москва, ул. Сакура, 12<br />
-        📧 Email: info@sakurasushi.ru
-      </p>
-    </section>
-  </main>
+<section id="gallery">
+  <h2>Галерея</h2>
+  <div class="gallery-grid">
+    <!-- изображения блюд -->
+  </div>
+</section>
 
-  <script>
-    // Переключение вкладок меню
-    const navButtons = document.querySelectorAll('nav .nav-btn');
-    const sections = document.querySelectorAll('section.section-content');
+<section id="contacts">
+  <h2>Контакты</h2>
+  <p>Адрес, телефон, карта и форма обратной связи</p>
+</section>
 
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const target = btn.getAttribute('data-target');
-        sections.forEach(sec => {
-          sec.classList.toggle('active', sec.id === target);
-        });
-      });
-    });
-
-    // Анимация лепестков сакуры
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('sakura-petal');
-      petal.style.left = Math.random() * window.innerWidth + 'px';
-      petal.style.animationDelay = (Math.random() * 7) + 's';
-      petal.style.animationDuration = 7 + Math.random() * 3 + 's';
-      document.body.appendChild(petal);
-
-      setTimeout(() => {
-        petal.remove();
-      }, 10000);
-    }
-
-    setInterval(createPetal, 300);
-  </script>
-
+  </main>  <footer>
+    <p>&copy; 2025 Sakura Sushi. Все права защищены.</p>
+  </footer>
 </body>
 </html>
