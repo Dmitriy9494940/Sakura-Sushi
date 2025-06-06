@@ -1,53 +1,159 @@
-
-body {
+/* Общие стили */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+body {
+  background: #fff8f0;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Хедер */
+header {
+  background: #d94f4f;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgb(217 79 79 / 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
+
+nav ul.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-top: 10px;
+}
+
+nav ul.menu li {
+  margin: 0 20px;
+}
+
+nav ul.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+nav ul.menu li a:hover {
+  color: #ffccb2;
+}
+
+/* Hero секция */
+#hero {
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px #00000088;
+  margin-bottom: 30px;
+}
+
+#hero h2 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+#hero p {
+  font-size: 1.4rem;
+}
+
+/* Раздел О нас */
+#about {
+  margin-bottom: 50px;
+  font-size: 1.2rem;
   text-align: center;
 }
 
-header {
-  padding: 2rem 1rem;
+/* Меню с 3D эффектом */
+.menu-3d {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  perspective: 1200px;
 }
 
-.logo {
-  width: 80px;
-  margin-bottom: 1rem;
-}
-
-.subtitle {
-  color: #aaa;
-}
-
-.hero {
-  padding: 2rem 1rem;
-}
-
-.whatsapp-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+.menu-card {
+  width: 280px;
   background: #fff;
-  color: #000;
-  text-decoration: none;
-  border-radius: 9999px;
-  transition: background 0.3s;
+  border-radius: 20px;
+  box-shadow: 0 12px 20px rgb(0 0 0 / 0.15);
+  padding: 20px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  --rotateY: 0deg;
+  transform: rotateY(var(--rotateY));
 }
 
-.whatsapp-button:hover {
-  background: #ddd;
+.menu-card:hover {
+  --rotateY: 15deg;
+  box-shadow: 0 18px 30px rgb(0 0 0 / 0.25);
 }
 
-.contact {
-  padding: 2rem 1rem;
-  border-top: 1px solid #333;
+.menu-card img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 15px;
 }
 
+.menu-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #d94f4f;
+}
+
+.menu-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #b63636;
+}
+
+/* Контакты */
+#contact {
+  margin-top: 60px;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Футер */
 footer {
-  padding: 1rem;
-  font-size: 0.8rem;
-  color: #666;
-  border-top: 1px solid #333;
+  background: #d94f4f;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1.5px;
 }
