@@ -2,8 +2,8 @@
   --bg-color: #121212;
   --text-color: #fff;
   --accent-color: #e63946;
-  --page-width: 300px;
-  --page-height: 400px;
+  --page-width: 320px;
+  --page-height: 450px;
 }
 
 body, html, #root, .app {
