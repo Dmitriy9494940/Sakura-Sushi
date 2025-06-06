@@ -1,0 +1,105 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './App.css';
+
+const menuData = [
+  {
+    category: 'Роллы',
+    items: [
+      { name: 'Калифорния', price: '450₽', desc: 'Краб, авокадо, огурец, рис', img: 'https://source.unsplash.com/200x150/?sushi' },
+      { name: 'Филадельфия', price: '500₽', desc: 'Лосось, сыр, огурец', img: 'https://source.unsplash.com/201x150/?roll' },
+    ],
+  },
+  {
+    category: 'Суши',
+    items: [
+      { name: 'Лосось', price: '150₽', desc: 'Свежий лосось', img: 'https://source.unsplash.com/202x150/?sushi' },
+      { name: 'Тунец', price: '170₽', desc: 'Красный тунец', img: 'https://source.unsplash.com/203x150/?sushi' },
+    ],
+  },
+  // Добавь остальные категории
+];
+
+function SakuraAnimation() {
+  return (
+    <div className="sakura-animation">
+      {/* Простая анимация лепестков сакуры */}
+      <div className="petal" />
+      <div className="petal" />
+      <div className="petal" />
+    </div>
+  );
+}
+
+function Page({ data }) {
+  return (
+    <div className="page">
+      <h2>{data.category}</h2>
+      <div className="items">
+        {data.items.map((item, idx) => (
+          <div className="item" key={idx}>
+            <img src={item.img} alt={item.name} />
+            <div className="info">
+              <h3>{item.name}</h3>
+              <p>{item.desc}</p>
+              <p className="price">{item.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const touchStartX = useRef(null);
+
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (diff > 50 && currentPage < menuData.length - 1) {
+      setCurrentPage(currentPage + 1);
+    } else if (diff < -50 && currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+    touchStartX.current = null;
+  }
+
+  return (
+    <div className="app dark-theme">
+      <header>
+        <div className="logo">
+          <SakuraAnimation />
+          <h1>Sakura Sushi Апрелевка</h1>
+        </div>
+      </header>
+
+      <main
+        className="book"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        style={{ '--current-page': currentPage }}
+      >
+        {menuData.map((page, idx) => (
+          <div
+            key={idx}
+            className={`book-page ${idx === currentPage ? 'active' : ''}`}
+            style={{ transform: `rotateY(${(idx - currentPage) * 180}deg)` }}
+          >
+            <Page data={page} />
+          </div>
+        ))}
+      </main>
+
+      <footer>
+        <p>Адрес: г. Апрелевка, ул. Дубки, д. 15</p>
+      </footer>
+    </div>
+  );
+}
