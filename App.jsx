@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 const menuData = [
@@ -16,13 +16,12 @@ const menuData = [
       { name: 'Тунец', price: '170₽', desc: 'Красный тунец', img: 'https://source.unsplash.com/203x150/?sushi' },
     ],
   },
-  // Добавь остальные категории
+  // Добавь остальные категории по желанию
 ];
 
 function SakuraAnimation() {
   return (
     <div className="sakura-animation">
-      {/* Простая анимация лепестков сакуры */}
       <div className="petal" />
       <div className="petal" />
       <div className="petal" />
