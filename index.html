@@ -3,181 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sakura Sushi</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
-      background: #fff8f0;
-      color: #333;
-    }
-    header {
-      background: #d93a3a;
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .banner {
-      background: url('https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      height: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
-      text-align: center;
-      padding: 0 20px;
-    }
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      border-bottom: 2px solid #d93a3a;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-    }
-    .menu-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .menu-item {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      width: 200px;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
-      overflow: hidden;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-    .menu-item img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-bottom: 1px solid #ddd;
-    }
-    .menu-item p {
-      padding: 10px;
-      margin: 0;
-      font-weight: 600;
-      color: #d93a3a;
-    }
-    .contacts p {
-      margin: 5px 0;
-    }
-    footer {
-      background: #d93a3a;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 0.9rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    @media(max-width: 600px) {
-      .menu-list {
-        flex-direction: column;
-        align-items: center;
-      }
-      .menu-item {
-        width: 100%;
-        max-width: 300px;
-      }
-    }
-  </style>
+  <title>Sakura Sushi - Современный суши бар</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="logo">Sakura Sushi</div>
-    <nav>
-      <a href="#">Главная</a>
-      <a href="#">Меню</a>
-      <a href="#">О нас</a>
-      <a href="#">Контакты</a>
-      <a href="#">Заказать</a>
-    </nav>
+    <div class="container">
+      <h1>Sakura Sushi</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#menu">Меню</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <div class="banner">
-    Sakura Sushi — лучший вкус Японии в вашем городе
-  </div>
+  <section id="hero">
+    <div class="container">
+      <h2>Добро пожаловать в Sakura Sushi</h2>
+      <p>Лучшие суши с 3D-эффектом и свежайшими ингредиентами</p>
+    </div>
+  </section>
 
-  <main>
-    <section class="about">
-      <h2>О нас</h2>
-      <p>Мы готовим свежие суши и роллы по традиционным японским рецептам с любовью и вниманием к качеству. Закажите доставку или приходите к нам!</p>
-    </section>
+  <section id="about" class="container">
+    <h2>О нас</h2>
+    <p>Мы – команда профессионалов, которые создают уникальные блюда японской кухни с современным подходом и 3D презентацией меню, которая впечатлит даже самых требовательных гостей.</p>
+  </section>
 
-    <section class="menu">
-      <h2>Популярные блюда</h2>
-      <div class="menu-list">
-        <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb37?auto=format&fit=crop&w=400&q=80" alt="Филадельфия" />
-          <p>Классический Филадельфия</p>
-        </div>
-        <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Калифорния" />
-          <p>Ролл Калифорния</p>
-        </div>
-        <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400&q=80" alt="Сашими" />
-          <p>Сашими микс</p>
-        </div>
-        <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=400&q=80" alt="Мисо суп" />
-          <p>Мисо суп</p>
-        </div>
-        <div class="menu-item">
-          <img src="https://images.unsplash.com/photo-1529692236671-f865e6852f0e?auto=format&fit=crop&w=400&q=80" alt="Зеленый чай" />
-          <p>Зеленый чай</p>
-        </div>
+  <section id="menu" class="container">
+    <h2>Наше меню</h2>
+    <div class="menu-3d">
+      <div class="menu-card" style="--i:0">
+        <img src="images/sushi1.jpg" alt="Суши Сет 1" />
+        <h3>Суши Сет 1</h3>
+        <p>Ассорти из свежих суши с лососем, тунцом и авокадо.</p>
+        <p class="price">1200 ₽</p>
       </div>
-    </section>
+      <div class="menu-card" style="--i:1">
+        <img src="images/sushi2.jpg" alt="Суши Сет 2" />
+        <h3>Суши Сет 2</h3>
+        <p>Вкуснейшие роллы с угрем и сливочным сыром.</p>
+        <p class="price">1400 ₽</p>
+      </div>
+      <div class="menu-card" style="--i:2">
+        <img src="images/sushi3.jpg" alt="Суши Сет 3" />
+        <h3>Суши Сет 3</h3>
+        <p>Классические нигири с креветками и икрой.</p>
+        <p class="price">1300 ₽</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="contacts">
-      <h2>Контакты</h2>
-      <p>Адрес: г. Москва, ул. Примерная, д. 1</p>
-      <p>Телефон: +7 (999) 123-45-67</p>
-      <p>Email: info@sakurasushi.ru</p>
-      <p>Мы на карте:</p>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.5409246282046!2d37.62039371603415!3d55.7539605805527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414ab45e4873a2e7%3A0x4132a95b847d9b0a!2z0J7QvtC70YHQutCw0Y8g0YPQu9C40YbQsCDQmtC-0YHQutCw0Y8!5e0!3m2!1sru!2sru!4v1685990000000!5m2!1sru!2sru"
-        width="100%"
-        height="250"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </section>
-  </main>
+  <section id="contact" class="container">
+    <h2>Контакты</h2>
+    <p>Адрес: ул. Вкусная, 10, г. Вашгород</p>
+    <p>Телефон: +7 (900) 123-45-67</p>
+    <p>Email: info@sakurasushi-bar.ru</p>
+  </section>
 
   <footer>
-    © 2025 Sakura Sushi — Все права защищены | <a href="#" style="color:#ffd6d6;">VK</a> | <a href="#" style="color:#ffd6d6;">Instagram</a> | <a href="#" style="color:#ffd6d6;">Facebook</a>
+    <div class="container">
+      <p>© 2025 Sakura Sushi. Все права защищены.</p>
+    </div>
   </footer>
 </body>
 </html>
