@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sakura Sushi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <img src="images/sakura-branch.png" alt="Sakura Branch" class="logo">
+      <h1 class="site-title">Sakura Sushi</h1>
+      <p class="subtitle">Лучшая доставка суши в Апрелевке</p>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>Добро пожаловать в Sakura Sushi</h2>
+      <p>Наслаждайтесь эксклюзивными роллами и сетами в 3D формате</p>
+      <a href="#menu" class="btn">Смотреть меню</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <h2 class="section-title">Наше меню</h2>
+      <div class="menu-grid">
+        <!-- Menu Item 1 -->
+        <div class="menu-item" onmousemove="tiltEffect(event)" onmouseleave="resetTilt(event)">
+          <div class="card">
+            <img src="images/sushi1.jpg" alt="Филадельфия" class="menu-img">
+            <div class="menu-info">
+              <h3>Ролл Филадельфия</h3>
+              <p>Классический ролл с лососем, сливочным сыром и авокадо.</p>
+              <span class="price">590 ₽</span>
+            </div>
+          </div>
+        </div>
+        <!-- Menu Item 2 -->
+        <div class="menu-item" onmousemove="tiltEffect(event)" onmouseleave="resetTilt(event)">
+          <div class="card">
+            <img src="images/sushi2.jpg" alt="Калифорния" class="menu-img">
+            <div class="menu-info">
+              <h3>Ролл Калифорния</h3>
+              <p>Ролл c крабовым мясом, авокадо и икрой тобико.</p>
+              <span class="price">650 ₽</span>
+            </div>
+          </div>
+        </div>
+        <!-- Menu Item 3 -->
+        <div class="menu-item" onmousemove="tiltEffect(event)" onmouseleave="resetTilt(event)">
+          <div class="card">
+            <img src="images/sushi3.jpg" alt="Сакура Сет" class="menu-img">
+            <div class="menu-info">
+              <h3>Сакура Сет</h3>
+              <p>Ассорти из 24 шт. роллов и 12 шт. нигири.</p>
+              <span class="price">2200 ₽</span>
+            </div>
+          </div>
+        </div>
+        <!-- Menu Item 4 -->
+        <div class="menu-item" onmousemove="tiltEffect(event)" onmouseleave="resetTilt(event)">
+          <div class="card">
+            <img src="images/sushi4.jpg" alt="Нигири Сет" class="menu-img">
+            <div class="menu-info">
+              <h3>Нигири Сет</h3>
+              <p>Большой сет из свежих нигири с лососем, тунцом и креветкой.</p>
+              <span class="price">1800 ₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Контакты</h2>
+      <p>📍 Апрелевка, улица Дубки, 15</p>
+      <p>📞 <a href="tel:+79264808229">+7 (926) 480-82-29</a></p>
+      <p>💬 <a href="https://wa.me/79264808229">Написать в WhatsApp</a></p>
+      <div class="socials">
+        <a href="#" class="social-icon">Instagram</a>
+        <a href="#" class="social-icon">VK</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Sakura Sushi. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
